@@ -17,6 +17,10 @@
 # build the .deb from source on Ubuntu's servers.  Ubuntu/Launchpad then
 # digitally signs the .deb file which end-users download.
 #
+# If you run this process yourself, you should ensure you have a GPG key pair
+# installed, and update DEBFULLNAME and DEBEMAIL to reflect your name, and the
+# identifier assigned to the GPG key pair.
+#
 # At no point in time does Pwntools ever modify the source code to binutils,
 # and at no point in time does the end-user have to trust Pwntools to not
 # backdoor the binaries, since they are built by a trusted third party (Ubuntu).
