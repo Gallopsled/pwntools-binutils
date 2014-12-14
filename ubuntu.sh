@@ -29,8 +29,8 @@
 # 'dpkg-buildpackage' to build the .deb files locally.
 #
 
-sudo apt-get build-dep binutils gnupg gnupg-agent
-sudo apt-get install devscripts binutils-source
+sudo apt-get build-dep binutils
+sudo apt-get install devscripts binutils-source gnupg gnupg-agent
 
 export DEBFULLNAME="Zach Riggle"
 export DEBEMAIL="zachriggle@gmail.com"
@@ -40,11 +40,14 @@ set -ex
 
 rm -rf binutils-*
 
+for RELEASE in precise; # trusty
+do
+
 for ARCH in aarch64 alpha arm avr cris hppa ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sparc vax xscale;
 do
     cd $DIR
     rm -rf binutils-powerpc-cross-0.10
-    apt-get source binutils-powerpc-cross
+    apt-get source -t $RELEASE binutils-powerpc-cross
     cd $DIR/binutils-powerpc-cross-0.10
     sed -i "s|powerpc|$ARCH|ig" debian/control
     sed -i "s|CROSS_ARCH .*|CROSS_ARCH=$ARCH|ig" debian/rules
@@ -55,6 +58,8 @@ do
     debuild -S -sa
     # Uncomment for local build
     # dpkg-buildpackage -us -uc -j8
+done
+
 done
 
 cd $DIR
