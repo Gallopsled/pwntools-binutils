@@ -35,7 +35,7 @@ sudo apt-get install devscripts binutils-source gnupg gnupg-agent
 export DEBFULLNAME="Zach Riggle"
 export DEBEMAIL="zachriggle@gmail.com"
 export DIR=$PWD
-export VERSION=9
+export VERSION=10
 
 set -ex
 
@@ -49,7 +49,10 @@ do
     cd $DIR
     rm -rf binutils-powerpc-cross-0.10
     apt-get source  binutils-powerpc-cross
-    mv $DIR/binutils-powerpc-cross-0.10 $DIR/binutils-$ARCH-cross-0.10
+
+    mv $DIR/binutils-powerpc-cross-0.10 xxx
+    mv xxx $DIR/binutils-$ARCH-cross-0.10
+
     cd $DIR/binutils-$ARCH-cross-0.10
 
     MIN_VER_BINUTILS=2.22
@@ -60,12 +63,15 @@ do
 
     for var in MIN_VER_BINUTILS CROSS_ARCH CROSS_GNU_TYPE;
     do
-        sed -Ei "s|$var.*:=.*|$var := ${!var}|ig" debian/rules
         sed -Ei "s|$var|${!var}|ig"               debian/control
     done
 
     # Actually need to remove CROSS_GNU_TYPE from rules
     sed -Ei 's|CROSS_GNU_TYPE := .*||ig' debian/rules
+
+    # Need to make CROSS_ARCH be a GNU triplet
+    sed -Ei "s|CROSS_ARCH.*:=.*|CROSS_ARCH := $CROSS_GNU_TYPE|ig" debian/rules
+
 
     dch --distribution $RELEASE --newversion 0.11pwntools$VERSION~$RELEASE --package binutils-$ARCH-cross "Create $ARCH version for pwntools"
     dch --release "Release"
