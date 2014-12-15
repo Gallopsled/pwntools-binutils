@@ -35,34 +35,53 @@ sudo apt-get install devscripts binutils-source gnupg gnupg-agent
 export DEBFULLNAME="Zach Riggle"
 export DEBEMAIL="zachriggle@gmail.com"
 export DIR=$PWD
+export VERSION=9
 
 set -ex
 
 rm -rf binutils-*
 
-for RELEASE in precise; # trusty
+for RELEASE in precise trusty;
 do
 
-for ARCH in aarch64 alpha arm avr cris hppa ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sparc vax xscale;
+for ARCH in aarch64 alpha arm avr cris hppa ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sh sparc vax xscale;
 do
     cd $DIR
     rm -rf binutils-powerpc-cross-0.10
-    apt-get source -t $RELEASE binutils-powerpc-cross
-    cd $DIR/binutils-powerpc-cross-0.10
-    sed -i "s|powerpc|$ARCH|ig" debian/control
-    sed -i "s|CROSS_ARCH .*|CROSS_ARCH=$ARCH|ig" debian/rules
-    sed -i "s|CROSS_GNU_TYPE .*|CROSS_ARCH=$ARCH-linux-gnu|ig" debian/rules
+    apt-get source  binutils-powerpc-cross
+    mv $DIR/binutils-powerpc-cross-0.10 $DIR/binutils-$ARCH-cross-0.10
+    cd $DIR/binutils-$ARCH-cross-0.10
 
-    dch --newversion 0.11pwntools5 --package binutils-$ARCH-cross "Create $ARCH version for pwntools"
+    MIN_VER_BINUTILS=2.22
+    CROSS_ARCH=$ARCH
+    CROSS_GNU_TYPE=$CROSS_ARCH-linux-gnu
+
+    cp debian/control.in debian/control
+
+    for var in MIN_VER_BINUTILS CROSS_ARCH CROSS_GNU_TYPE;
+    do
+        sed -Ei "s|$var.*:=.*|$var := ${!var}|ig" debian/rules
+        sed -Ei "s|$var|${!var}|ig"               debian/control
+    done
+
+    # Actually need to remove CROSS_GNU_TYPE from rules
+    sed -Ei 's|CROSS_GNU_TYPE := .*||ig' debian/rules
+
+    dch --distribution $RELEASE --newversion 0.11pwntools$VERSION~$RELEASE --package binutils-$ARCH-cross "Create $ARCH version for pwntools"
     dch --release "Release"
     debuild -S -sa
+
     # Uncomment for local build
     # dpkg-buildpackage -us -uc -j8
+
+    rm -rf $PWD
+    cd ..
 done
 
 done
 
 cd $DIR
+
 
 for CHANGES in *source.changes;
 do
