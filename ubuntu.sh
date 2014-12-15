@@ -35,7 +35,7 @@ sudo apt-get install devscripts binutils-source gnupg gnupg-agent
 export DEBFULLNAME="Zach Riggle"
 export DEBEMAIL="zachriggle@gmail.com"
 export DIR=$PWD
-export VERSION=10
+export VERSION=12
 
 set -ex
 
@@ -44,7 +44,7 @@ rm -rf binutils-*
 for RELEASE in precise trusty;
 do
 
-for ARCH in aarch64 alpha arm avr cris hppa ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sh sparc vax xscale;
+for ARCH in aarch64 alpha arm avr cris hppa i386 ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sh sparc sparc64 vax xscale;
 do
     cd $DIR
     rm -rf binutils-powerpc-cross-0.10
