@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-for file in *.rb; do
-brew install $file
-done
+
+if [[ $# -ne 1 ]];
+then
+echo "usage: $0 architecture"
+else
+brew install binutils-*$1*.rb
+fi

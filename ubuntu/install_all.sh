@@ -9,5 +9,7 @@ sudo apt-get install --yes software-properties-common
 sudo apt-add-repository --yes ppa:pwntools/binutils
 sudo apt-get update
 
-sudo apt-get install binutils-$1-linux-gnu
+for arch in $ARCHES; do
+sudo apt-get install binutils-$arch-linux-gnu
+done
 fi

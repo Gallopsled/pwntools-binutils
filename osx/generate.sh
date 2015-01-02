@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
+source ../common/arch.sh
 
 title_case()
 {
     python -c 'import sys; print " ".join(map(str.title, sys.argv[1:]))' $*
 }
-
-ARCHES="aarch64 alpha arm avr cris hppa ia64 m68k mips mips64 msp430 powerpc powerpc64 s390 sparc vax xscale"
 
 for arch in $ARCHES; do
 
