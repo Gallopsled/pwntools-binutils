@@ -15,7 +15,7 @@ class BinutilsAvr < Formula
                           "--disable-multilib",
                           "--disable-nls",
                           "--disable-werror"
-    system "make"
+    system "make", "-j"
     system "make", "install"
     system "rm", "-rf", "#{prefix}/share/info"
   end

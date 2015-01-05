@@ -1,17 +1,4 @@
-#!/usr/bin/env bash
-source ../common/arch.sh
-
-title_case()
-{
-    python -c 'import sys; print " ".join(map(str.title, sys.argv[1:]))' $*
-}
-
-for arch in $ARCHES; do
-
-file=binutils-$arch.rb
-
-cat > $file <<EOF
-class Binutils$(title_case $arch) < Formula
+class BinutilsI386 < Formula
   homepage "http://www.gnu.org/software/binutils/binutils.html"
   url "http://ftpmirror.gnu.org/binutils/binutils-2.25.tar.gz"
   mirror "http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.gz"
@@ -23,7 +10,7 @@ class Binutils$(title_case $arch) < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--target=$arch-unknown-linux-gnu",
+                          "--target=i386-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",
                           "--disable-nls",
@@ -34,10 +21,7 @@ class Binutils$(title_case $arch) < Formula
   end
 
   test do
-    assert `#{bin}/gnm #{bin}/gnm`.include? 'main'
-    assert_equal 0, $?.exitstatus
+    assert .include? 'main'
+    assert_equal 0, 0.exitstatus
   end
 end
-EOF
-
-done
