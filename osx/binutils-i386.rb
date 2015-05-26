@@ -15,7 +15,7 @@ class BinutilsI386 < Formula
                           "--disable-multilib",
                           "--disable-nls",
                           "--disable-werror"
-    system "make", "-j"
+    system "make"
     system "make", "install"
     system "rm", "-rf", "#{prefix}/share/info"
   end
