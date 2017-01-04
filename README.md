@@ -8,7 +8,7 @@ Select the directory that corresponds to your operating system, and run `install
 
 ## Ubuntu
 
-**NOTE**: As of Ubuntu 16.04 (Xenial), there are [packages for most architectures](https://launchpad.net/ubuntu/xenial/+source/binutils).  You should just be able to `apt-get install binutils-arm-gnueabihf binutils-mipsel-linux-gnu`.
+> **NOTE**: As of Ubuntu 16.04 (Xenial), there are [packages for most architectures](https://launchpad.net/ubuntu/xenial/+source/binutils).  You should just be able to `apt-get install binutils-arm-gnueabihf binutils-mipsel-linux-gnu`.
 
 The Ubuntu installation process uses a [Personal Package Archive (PPA) hosted by Ubuntu's Launchpad](https://launchpad.net/~pwntools/+archive/ubuntu/binutils).  These work by modifying a single `binutils-cross` `.deb` source archive, and changing the architecture.
 
