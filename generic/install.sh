@@ -7,13 +7,13 @@ echo "usage: $0 architecture"
 else
 
 TARGET=$1
-V=2.25
+V=2.29.1
 
 cd /tmp
 wget -nc http://ftp.gnu.org/gnu/binutils/binutils-$V.tar.gz
 wget -nc http://ftp.gnu.org/gnu/binutils/binutils-$V.tar.gz.sig
 
-gpg --keyserver keys.gnupg.net --recv-keys 4AE55E93
+gpg --keyserver keys.gnupg.net --recv-keys 13FCEF89DD9E3C4F
 gpg --verify binutils-$V.tar.gz.sig
 
 tar xf binutils-$V.tar.gz
