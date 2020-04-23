@@ -1,8 +1,8 @@
-class BinutilsArm < Formula
-  homepage "http://www.gnu.org/software/binutils/binutils.html"
-  url "http://ftpmirror.gnu.org/binutils/binutils-2.25.tar.gz"
-  mirror "http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.gz"
-  sha256 "cccf377168b41a52a76f46df18feb8f7285654b3c1bd69fc8265cb0fc6902f2d"
+class BinutilsPowerpc64 < Formula
+  homepage "https://www.gnu.org/software/binutils/binutils.html"
+  url "https://ftpmirror.gnu.org/binutils/binutils-2.34.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.gz"
+  sha256 "53537d334820be13eeb8acb326d01c7c81418772d626715c7ae927a7d401cab3"
 
   # No --default-names option as it interferes with Homebrew builds.
 
@@ -10,7 +10,7 @@ class BinutilsArm < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--target=arm-unknown-linux-gnu",
+                          "--target=powerpc64-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",
                           "--disable-nls",

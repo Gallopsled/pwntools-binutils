@@ -3,7 +3,7 @@ source ../common/arch.sh
 
 title_case()
 {
-    python -c 'import sys; print " ".join(map(str.title, sys.argv[1:]))' $*
+    python -c 'import sys;import re; print " ".join(map(str.capitalize, [sys.argv[1].replace("_", "")]))' $*
 }
 
 for arch in $ARCHES; do
@@ -12,10 +12,10 @@ file=binutils-$arch.rb
 
 cat > $file <<EOF
 class Binutils$(title_case $arch) < Formula
-  homepage "http://www.gnu.org/software/binutils/binutils.html"
-  url "http://ftpmirror.gnu.org/binutils/binutils-2.25.tar.gz"
-  mirror "http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.gz"
-  sha1 "f10c64e92d9c72ee428df3feaf349c4ecb2493bd"
+  homepage "https://www.gnu.org/software/binutils/binutils.html"
+  url "https://ftpmirror.gnu.org/binutils/binutils-2.34.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.gz"
+  sha256 "53537d334820be13eeb8acb326d01c7c81418772d626715c7ae927a7d401cab3"
 
   # No --default-names option as it interferes with Homebrew builds.
 
