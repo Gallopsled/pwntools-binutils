@@ -2,5 +2,5 @@
 source ../common/arch.sh
 
 for arch in $ARCHES; do
-brew upgrade binutils-$arch.rb
+brew install binutils-$arch.rb
 done
