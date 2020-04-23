@@ -3,7 +3,7 @@ source ../common/arch.sh
 
 title_case()
 {
-    python -c 'import sys;import re; print " ".join(map(str.capitalize, [sys.argv[1].replace("_", "")]))' $*
+    python -c 'import sys;import re; print(" ".join(map(str.capitalize, [sys.argv[1].replace("_", "")])))' $*
 }
 
 for arch in $ARCHES; do
