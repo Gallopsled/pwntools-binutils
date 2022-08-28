@@ -10,6 +10,7 @@ class BinutilsS390 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=s390-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

@@ -10,6 +10,7 @@ class BinutilsSparc64 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=sparc64-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

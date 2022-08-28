@@ -10,6 +10,7 @@ class BinutilsX8664 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=x86_64-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

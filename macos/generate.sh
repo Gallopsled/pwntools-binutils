@@ -23,6 +23,7 @@ class Binutils$(title_case $arch) < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=$arch-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",
