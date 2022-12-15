@@ -28,8 +28,8 @@ class Binutils$(title_case $arch) < Formula
                           "--disable-multilib",
                           "--disable-nls",
                           "--disable-werror"
-    system "make", "-j"
-    system "make", "install"
+    system "make", "MAKEINFO=true", "-j"
+    system "make", "MAKEINFO=true", "install"
     system "rm", "-rf", "#{prefix}/share/info"
   end
 
