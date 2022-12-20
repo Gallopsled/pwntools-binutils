@@ -10,6 +10,7 @@ class BinutilsMsp430 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=msp430-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

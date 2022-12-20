@@ -10,6 +10,7 @@ class BinutilsAvr < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=avr-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",
