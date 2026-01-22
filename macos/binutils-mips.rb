@@ -1,8 +1,8 @@
 class BinutilsMips < Formula
   homepage "https://www.gnu.org/software/binutils/binutils.html"
-  url "https://ftpmirror.gnu.org/binutils/binutils-2.38.tar.gz"
-  mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.gz"
-  sha256 "b3f1dc5b17e75328f19bd88250bee2ef9f91fc8cbb7bd48bdb31390338636052"
+  url "https://ftpmirror.gnu.org/binutils/binutils-2.45.1.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.45.1.tar.gz"
+  sha256 "2b63ae0ad015eb2755294f127bfd179c1849979dd87b6e8e1a7376964a4323dc"
 
   # No --default-names option as it interferes with Homebrew builds.
 
@@ -14,7 +14,8 @@ class BinutilsMips < Formula
                           "--disable-static",
                           "--disable-multilib",
                           "--disable-nls",
-                          "--disable-werror"
+                          "--disable-werror",
+                          "--with-system-zlib"
     system "make", "MAKEINFO=true", "-j"
     system "make", "MAKEINFO=true", "install"
     system "rm", "-rf", "#{prefix}/share/info"
