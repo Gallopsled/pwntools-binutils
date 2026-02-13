@@ -10,6 +10,7 @@ class BinutilsVax < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=vax-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

@@ -10,6 +10,7 @@ class BinutilsPowerpc < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=powerpc-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

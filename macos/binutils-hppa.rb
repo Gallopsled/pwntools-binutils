@@ -10,6 +10,7 @@ class BinutilsHppa < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=hppa-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

@@ -10,6 +10,7 @@ class BinutilsXscale < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=xscale-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

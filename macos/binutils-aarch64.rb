@@ -10,6 +10,7 @@ class BinutilsAarch64 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=aarch64-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

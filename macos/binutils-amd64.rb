@@ -10,6 +10,7 @@ class BinutilsAmd64 < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=amd64-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

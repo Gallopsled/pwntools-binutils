@@ -10,6 +10,7 @@ class BinutilsAlpha < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=alpha-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",

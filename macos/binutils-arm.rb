@@ -10,6 +10,7 @@ class BinutilsArm < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--libdir=#{prefix}/#{name}",
                           "--target=arm-unknown-linux-gnu",
                           "--disable-static",
                           "--disable-multilib",
